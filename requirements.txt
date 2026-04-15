@@ -31,6 +31,9 @@ scikit-learn==1.5.2
 # ⚠️ TEMPORARILY REMOVE (add later via Docker)
 # scipy==1.11.4
 # sentence-transformers==2.6.1
+torch==2.2.2
+transformers==4.38.2
+sentence-transformers==2.6.1
 
 # API Protection
 slowapi==0.1.9
