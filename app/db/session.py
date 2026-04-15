@@ -38,13 +38,13 @@ def receive_connect(dbapi_conn, connection_record):
     logger.debug(f"Database connection established: {dbapi_conn}")
 
 
-@event.listens_for(engine, "pool_checkin")
+@event.listens_for(engine, "checkin")
 def receive_checkin(dbapi_conn, connection_record):
     """Log connection returned to pool."""
     logger.debug("Database connection returned to pool")
 
 
-@event.listens_for(engine, "pool_checkout")
+@event.listens_for(engine, "checkout")
 def receive_checkout(dbapi_conn, connection_record, connection_proxy):
     """Log connection checked out from pool."""
     logger.debug("Database connection checked out from pool")
