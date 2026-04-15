@@ -21,7 +21,7 @@ python-dotenv==1.0.1
 # Scraping
 requests==2.31.0
 beautifulsoup4==4.12.3
-lxml==4.9.4
+lxml==5.3.2
 
 # ML (SAFE versions only)
 numpy==1.26.4
