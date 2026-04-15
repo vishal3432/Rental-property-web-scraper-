@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     celery_broker_url: str | None = None
     celery_result_backend: str | None = None
 
-    scrape_url: str = "https://appbrewery.github.io/Zillow-Clone/"
+    scrape_url: str = "https://raw.githubusercontent.com/appbrewery/Zillow-Clone/master/index.html"
     request_timeout: int = 20
     max_retries: int = 3
     retry_backoff_seconds: float = 2.0
