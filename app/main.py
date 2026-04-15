@@ -15,6 +15,7 @@ settings = get_settings()
 
 configure_logging()
 
+app = FastAPI()
 
 async def check_database_health() -> dict:
     """Check database connectivity and health."""
