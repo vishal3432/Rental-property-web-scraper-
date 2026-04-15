@@ -1,30 +1,51 @@
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-celery[redis]==5.3.4
-redis==5.0.1
-sqlalchemy==2.0.23
-psycopg2-binary==2.9.9
-pydantic==2.5.0
-pydantic-settings==2.1.0
-python-dotenv==1.0.0
-requests==2.31.0
-beautifulsoup4==4.12.2
-scikit-learn==1.3.2
-sentence-transformers==2.2.2
-numpy==1.26.2
-lxml==4.9.3
-slowapi==0.1.9
-python-multipart==0.0.6
+# Core Backend
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
 gunicorn==21.2.0
 
-# Testing
-pytest==7.4.3
-pytest-cov==4.1.0
-pytest-asyncio==0.21.1
-httpx==0.25.2
+# Async + Workers
+celery[redis]==5.3.6
+redis==5.0.1
 
-# Development
-black==23.12.0
-flake8==6.1.0
+# Database
+sqlalchemy==2.0.27
+psycopg2-binary==2.9.9
+
+# Config & Validation
+pydantic==2.6.4
+pydantic-settings==2.2.1
+python-dotenv==1.0.1
+
+# Scraping
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==4.9.4
+
+# ML / NLP (for compatibility)
+numpy==1.26.4
+scipy==1.11.4
+scikit-learn==1.3.2
+sentence-transformers==2.6.1
+
+# API Protection
+slowapi==0.1.9
+python-multipart==0.0.9
+
+# HTTP Client
+httpx==0.26.0
+
+# Testing
+pytest==7.4.4
+pytest-cov==4.1.0
+pytest-asyncio==0.23.5
+
+# Dev Tools
+black==24.2.0
+flake8==7.0.0
 isort==5.13.2
-mypy==1.7.1
+mypy==1.8.0
+
+# Build Fixes 
+setuptools>=68.0.0
+wheel
+Cython
