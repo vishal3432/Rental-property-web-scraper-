@@ -1,3 +1,5 @@
+--only-binary=:all:
+
 # Core Backend
 fastapi==0.110.0
 uvicorn[standard]==0.27.1
@@ -21,11 +23,13 @@ requests==2.31.0
 beautifulsoup4==4.12.3
 lxml==4.9.4
 
-# ML / NLP (for compatibility)
+# ML (SAFE versions only)
 numpy==1.26.4
-scipy==1.11.4
 scikit-learn==1.3.2
-sentence-transformers==2.6.1
+
+# ⚠️ TEMPORARILY REMOVE (add later via Docker)
+# scipy==1.11.4
+# sentence-transformers==2.6.1
 
 # API Protection
 slowapi==0.1.9
@@ -33,19 +37,3 @@ python-multipart==0.0.9
 
 # HTTP Client
 httpx==0.26.0
-
-# Testing
-pytest==7.4.4
-pytest-cov==4.1.0
-pytest-asyncio==0.23.5
-
-# Dev Tools
-black==24.2.0
-flake8==7.0.0
-isort==5.13.2
-mypy==1.8.0
-
-# Build Fixes 
-setuptools>=68.0.0
-wheel
-Cython
