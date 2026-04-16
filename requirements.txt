@@ -1,4 +1,3 @@
---only-binary=:all:
 
 # Core Backend
 fastapi==0.110.0
