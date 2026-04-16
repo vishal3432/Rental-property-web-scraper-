@@ -13,7 +13,7 @@ class Settings(BaseSettings):
         description="Database URL - use env var in production"
     )
     redis_url: str = Field(
-        default="redis://localhost:6379/0",
+        default="redis://redis:6379/0",
         description="Redis URL - use env var in production"
     )
 
