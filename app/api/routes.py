@@ -34,24 +34,26 @@ def verify_api_key(x_api_key: str = Header(None)) -> bool:
 
 
 @router.post("/scrape")
-def trigger_scrape(api_key_valid: bool = Depends(verify_api_key)) -> dict:
-    """
-    Trigger a scraping task.
-    
-    Requires: X-API-Key header (if API_KEY_ENABLED=true)
-    """
+def trigger_scrape(
+    api_key_valid: bool = Depends(verify_api_key),
+    db: Session = Depends(get_db),
+) -> dict:
     try:
-        task = scrape_properties.delay()
-        logger.info(f"Scrape task triggered: {task.id}")
+        from app.scraper.http_client import ScraperClient
+        from app.scraper.parser import parse_properties
+        from app.scraper.pipeline import store_properties
+
+        html = ScraperClient().get(settings.scrape_url)
+        records = parse_properties(html)
+        stored = store_properties(db, records)
         return {
-            "task_id": task.id,
-            "status": "queued",
-            "message": "Scraping task has been queued"
+            "status": "done",
+            "scraped": len(records),
+            "stored": stored,
         }
     except Exception as e:
-        logger.error(f"Failed to queue scrape task: {e}")
-        raise HTTPException(status_code=500, detail="Failed to queue scraping task")
-
+        logger.error(f"Scrape failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/properties", response_model=list[PropertyOut])
 def list_properties(
